@@ -1,5 +1,9 @@
 <!doctype html>
 <html lang="de-CH"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#172b28"><meta name="description" content="Eingabe, Verarbeitung, Ausgabe: Transfermissionen, Geräte-Fänger und EVA-Tetris für den Informatikunterricht."><title>EVA-Labor · Verstehen. Fangen. Stapeln.</title><style>:root{--ink:#172b28;--muted:#687b75;--paper:#f6f7f1;--green:#247c6b;--purple:#7051ad;--orange:#c06a27;--line:#dce3d8;--mint:#d9f1e5;--lilac:#ece3fa;--peach:#ffead5;--yellow:#e9f2b2}*{box-sizing:border-box}body{margin:0;color:var(--ink);background:var(--paper);font:16px/1.55 ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}button,input,textarea,select{font:inherit}button{cursor:pointer}button:disabled{opacity:.45;cursor:not-allowed}a{color:var(--green)}button,a,input{outline-offset:4px}h1,h2,h3,p{margin:0 0 16px}h1{font-size:clamp(38px,5vw,67px);line-height:1.04;letter-spacing:-2.8px;font-weight:850}h2{font-size:30px;letter-spacing:-1px;line-height:1.2}h3{font-size:21px;line-height:1.25;letter-spacing:-.4px}.header{display:flex;gap:24px;align-items:center;justify-content:space-between;padding:20px 5%;border-bottom:1px solid var(--line);background:#fbfcf7}.logo{display:flex;align-items:center;gap:9px;text-decoration:none;color:var(--ink)}.logo b{font-size:26px;letter-spacing:-1px}.logo b span{color:var(--green)}.logo-squares{display:flex;gap:3px}.logo-squares i{width:25px;height:29px;display:grid;place-items:center;font-size:14px;font-weight:850;font-style:normal;border-radius:5px;background:var(--mint)}.logo-squares i:nth-child(2){background:var(--lilac);transform:translateY(-4px)}.logo-squares i:nth-child(3){background:var(--peach)}nav{display:flex;gap:5px}nav button{padding:9px 14px;border:0;background:none;border-radius:8px;color:var(--muted);font-size:14px;font-weight:650}nav button.active{background:var(--ink);color:white}.help-button{border:1px solid var(--line);border-radius:50%;background:white;width:34px;height:34px;color:var(--ink);font-weight:750}main{max-width:1216px;margin:auto;padding:40px 36px 65px;min-height:calc(100vh - 158px)}.eyebrow{text-transform:uppercase;letter-spacing:2px;font:750 11px/1.5 ui-monospace,SFMono-Regular,monospace;color:var(--green);margin-bottom:14px}.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:36px;align-items:center;padding:20px 0 42px}.hero p{color:var(--muted);font-size:18px;max-width:470px}.hero h1 em{font-style:normal;color:var(--green)}.hero-art{background:#e6eadf;border-radius:28px;min-height:300px;display:grid;place-items:center;position:relative;overflow:hidden;background-image:radial-gradient(#a4b6a2 1px,transparent 1px);background-size:18px 18px}.flow{display:flex;gap:10px;align-items:center;transform:rotate(-5deg)}.flow-block{width:105px;height:125px;border-radius:15px;background:var(--mint);border:1px solid #aac8b8;box-shadow:0 9px 0 #bccdbb;display:flex;align-items:center;flex-direction:column;justify-content:center;font-size:12px;font-weight:750}.flow-block:nth-of-type(2){background:var(--lilac);border-color:#c3b3dc;box-shadow:0 9px 0 #c8bdd9}.flow-block:nth-of-type(3){background:var(--peach);border-color:#ddc2a4;box-shadow:0 9px 0 #d7c6b4}.flow-block svg{width:42px;height:42px;margin-bottom:10px}.flow-arrow{font-size:24px;color:#71816c}.art-tag{position:absolute;bottom:21px;left:23px;letter-spacing:2px;font-size:10px;color:#596e5e}.button{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 20px;border-radius:10px;background:var(--ink);border:1px solid var(--ink);font-weight:750;color:white;text-decoration:none}.button.secondary{background:white;color:var(--ink);border-color:var(--line)}.button.green{background:var(--green);border-color:var(--green)}.button.small{padding:8px 13px;font-size:13px}.row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.between{justify-content:space-between}.muted{color:var(--muted)}.small{font-size:13px}.pill{display:inline-block;border:1px solid var(--line);background:white;padding:4px 10px;border-radius:30px;font-size:12px;font-weight:650}.intro-strip{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-bottom:35px}.intro-cell{padding:20px 24px;background:#fff;display:flex;align-items:center;gap:15px}.intro-cell+.intro-cell{border-left:1px solid var(--line)}.letter{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:10px;background:var(--mint);font-weight:850;color:var(--green);flex-shrink:0}.letter.V{background:var(--lilac);color:var(--purple)}.letter.A{background:var(--peach);color:var(--orange)}.intro-cell b{display:block}.game-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.game-card{border:1px solid var(--line);border-radius:20px;background:white;padding:24px;display:flex;flex-direction:column;gap:0;min-height:340px}.game-card .mini-art{border-radius:13px;height:110px;background:var(--mint);display:grid;place-items:center;margin-bottom:22px}.game-card:nth-child(2) .mini-art{background:var(--peach)}.game-card:nth-child(3) .mini-art{background:var(--lilac)}.mini-art svg{width:50px;height:50px}.game-card p{color:var(--muted);font-size:14px}.game-card .button{margin-top:auto;align-self:flex-start}.card-meta{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:10px}.note{padding:17px 20px;background:#eaf0e1;border-radius:12px;margin:24px 0;font-size:14px}.title-row{margin-bottom:25px}.title-row h1{font-size:43px;letter-spacing:-1.7px}.title-row p{max-width:740px;color:var(--muted)}.panel{background:white;border:1px solid var(--line);border-radius:18px;padding:26px;margin:20px 0}.mission-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.mission-card{border:1px solid var(--line);background:white;text-align:left;padding:20px;border-radius:14px;color:var(--ink);min-height:150px}.mission-card:hover{border-color:var(--green)}.mission-card.done{background:#eaf4e9;border-color:#b2cbb5}.mission-card b{font-size:17px;display:block;margin:14px 0 7px}.mission-card .num{font:750 12px monospace;color:var(--green)}.progress{height:7px;background:#e1e8dd;border-radius:9px;overflow:hidden;margin:16px 0 24px}.progress i{display:block;background:var(--green);height:100%}.learn-layout{display:grid;grid-template-columns:minmax(0,1fr) 270px;gap:22px;align-items:start}.question{font-size:20px;font-weight:700;line-height:1.4}.scenario{background:#f1f4ec;border-radius:12px;padding:20px;margin-bottom:24px}.options{display:grid;gap:10px}.option{display:flex;gap:13px;align-items:center;padding:16px;background:#fff;border:1.5px solid var(--line);border-radius:11px;color:var(--ink);text-align:left;width:100%}.option.selected{border-color:var(--green);background:#e8f5ec}.option span:first-child{display:grid;place-items:center;min-width:25px;height:25px;background:#eff3e9;border-radius:6px;font-size:12px;font-weight:750}.option.selected span:first-child{background:var(--green);color:white}.feedback{background:#e6f2e6;border-radius:12px;padding:18px;margin-top:20px;font-size:14px}.feedback.wrong{background:#fff0e1}.feedback strong{display:block;margin-bottom:5px}.chain{display:grid;gap:10px}.chain-item{padding:14px;background:#f7f8f3;border:1px solid var(--line);border-radius:10px;font-size:13px}.chain-item b{display:block;margin-bottom:6px}.chain-item span{font-size:12px;color:var(--muted)}.step-tabs{display:flex;gap:5px;margin-bottom:20px}.step-tabs span{padding:7px 13px;border-radius:8px;background:#f0f2e9;font-size:13px;font-weight:750}.step-tabs .active{background:var(--ink);color:white}.reflection{width:100%;padding:14px;border:1px solid #bac9bb;border-radius:10px;min-height:110px;resize:vertical;font:inherit;background:#fcfdf8;color:var(--ink)}.actions{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap;margin-top:22px}.arcade-layout{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:22px;align-items:start}.arena{border-radius:20px;background:#172b28;color:#eaf0df;padding:20px;position:relative}.arena-top{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:14px;font-size:13px}.arena-top b{font-size:22px;color:#e9f2b2}.canvas-wrap{position:relative;max-width:720px;margin:auto;touch-action:none}canvas{display:block;width:100%;height:auto;border-radius:13px;background:#1e3530;touch-action:none}.overlay{position:absolute;inset:0;background:#122923e8;display:flex;align-items:center;justify-content:center;text-align:center;border-radius:13px;padding:25px;z-index:2}.overlay>div{max-width:430px}.overlay h2{font-size:29px;color:#f0f5de}.overlay p{color:#c0d1c4;font-size:14px}.overlay .button{background:var(--yellow);border-color:var(--yellow);color:var(--ink)}.arcade-side{background:white;border:1px solid var(--line);border-radius:16px;padding:22px}.arcade-side h3{margin-bottom:12px}.arcade-side p,.arcade-side li{font-size:13px;color:var(--muted)}.arcade-side ul{padding-left:18px}.score-list{list-style:none!important;padding:0!important;margin:0}.score-list li{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding:9px 0;gap:10px}.score-list li b{color:var(--ink);white-space:nowrap}.controls{display:flex;gap:9px;justify-content:center;flex-wrap:wrap;margin-top:14px}.control{background:#314b41;border:1px solid #607565;color:white;min-width:54px;padding:10px 14px;border-radius:9px;touch-action:none;font-size:17px;user-select:none}.control:active{background:#526f54}.legend{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}.legend span{font-size:12px}.board-wrap{max-width:300px;margin:auto}.block-arena{max-width:550px}.block-stage{display:grid;grid-template-columns:minmax(180px,300px) 1fr;gap:15px;align-items:start}.next-box{background:#233e32;border:1px solid #4b6752;padding:12px;border-radius:10px;font-size:12px}.next-box b{display:block;font-size:14px;margin-top:7px}.classify{display:flex;gap:8px;justify-content:center;margin:14px 0}.classify button{width:65px;border:1px solid #719184;border-radius:9px;padding:9px;background:#264b3d;color:white;font-weight:850}.classify button:nth-child(2){background:#594773}.classify button:nth-child(3){background:#754c2d}.classify button:disabled{opacity:.45}.current-device{font-weight:750;text-align:center;font-size:18px;margin:10px 0}.game-message{min-height:51px;color:#dce9cc;font-size:13px;text-align:center;margin:10px 0}.switch{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.switch button{background:white;color:var(--ink);border:1px solid var(--line);border-radius:9px;padding:8px 11px;font-size:13px}.switch button.on{background:var(--ink);color:white}.kbd{padding:1px 5px;border:1px solid #bbc9b8;border-radius:4px;font:12px monospace}dialog{border:1px solid var(--line);border-radius:20px;color:var(--ink);padding:32px;max-width:660px;width:calc(100% - 30px);max-height:85vh;overflow:auto;background:var(--paper)}dialog::backdrop{background:#10231dd1}.close{position:absolute;right:14px;top:10px;font-size:28px;line-height:1;border:0;background:none;color:var(--muted)}details{background:white;border:1px solid var(--line);border-radius:10px;margin:10px 0;padding:13px}summary{cursor:pointer;font-weight:700}details p{font-size:14px;color:var(--muted);margin:12px 0 0}.gloss-row{display:flex;gap:14px;border-bottom:1px solid var(--line);padding:15px 0}footer{border-top:1px solid var(--line);max-width:1216px;margin:auto;padding:18px 36px;display:flex;gap:20px;justify-content:space-between;align-items:center;flex-wrap:wrap;font-size:12px;color:var(--muted)}footer button{border:0;background:none;color:var(--green);text-decoration:underline;padding:0;font-size:12px}#toast{position:fixed;bottom:25px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:13px 22px;border-radius:10px;z-index:10;max-width:90%;font-size:14px}.skip{position:absolute;left:-1000px}.skip:focus{left:10px;top:10px;background:white;padding:10px;z-index:100}.result-big{font-size:55px;font-weight:850;letter-spacing:-2px;color:var(--green)}.finish-card{max-width:730px;margin:20px auto}.meter-label{font-size:12px;color:var(--muted)}[hidden]{display:none!important}@media(max-width:1000px){.hero{gap:20px}.flow-block{width:84px}.mission-grid{grid-template-columns:repeat(2,1fr)}.arcade-layout{grid-template-columns:1fr 250px}.learn-layout{grid-template-columns:1fr 230px}.game-cards{gap:12px}.game-card{padding:20px}}@media(max-width:760px){.header{flex-wrap:wrap;padding:15px 20px;gap:12px}.header nav{order:3;width:100%;overflow:auto;justify-content:center}nav button{font-size:13px;padding:8px 10px}.help-button{margin-left:auto}main{padding:25px 18px 40px}.hero{grid-template-columns:1fr;padding-top:10px}.hero-art{min-height:210px;order:2}.flow-block{width:90px;height:110px}.hero h1{font-size:49px}.hero p{font-size:16px}.intro-strip{grid-template-columns:1fr}.intro-cell{padding:13px 18px}.intro-cell+.intro-cell{border-left:0;border-top:1px solid var(--line)}.game-cards{grid-template-columns:1fr}.game-card{min-height:0;display:grid;grid-template-columns:80px 1fr;gap:0 18px}.game-card .mini-art{grid-row:1/5;width:80px;height:100px}.game-card .button{grid-column:2;margin-top:5px}.arcade-layout,.learn-layout{grid-template-columns:1fr}.learn-layout aside{order:2}.arcade-side{margin-top:5px}.title-row h1{font-size:35px}.panel{padding:20px}.arena{padding:13px}.block-stage{grid-template-columns:minmax(150px,270px) minmax(70px,1fr)}.mission-card{padding:16px}.mission-card b{font-size:16px}.question{font-size:18px}.flow{gap:7px}.flow-arrow{font-size:20px}footer{padding:18px}.block-arena{margin:auto}.next-box{padding:9px;font-size:11px}.next-box b{font-size:12px}.option{padding:13px}}
+</style><style>
+.arcade-music{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:10px 14px;border-bottom:1px solid #d7dfce;background:#f3f6ec;color:#172b28;font-size:12px}
+.arcade-music .button{padding:7px 10px;font-size:12px}.arcade-music input{width:100px;accent-color:#38634d}.arcade-music small{margin-left:auto;color:#52634c}.arcade-music #musicValue{min-width:30px;font-variant-numeric:tabular-nums}
+@media(max-width:500px){.arcade-music small{width:100%;margin-left:0}}
 </style></head><body>
 <a class="skip" href="#main">Zum Inhalt</a><header class="header"><a href="#" class="logo" onclick="navigate('home');return false" aria-label="EVA-Labor Startseite"><span class="logo-squares"><i>E</i><i>V</i><i>A</i></span><b>labor<span>.</span></b></a><nav aria-label="Hauptnavigation"><button data-nav="home" onclick="navigate('home')">Übersicht</button><button data-nav="learn" onclick="navigate('learn')">Transfer</button><button data-nav="catch" onclick="navigate('catch')">Fangspiel</button><button data-nav="blocks" onclick="navigate('blocks')">EVA-Tetris</button></nav><button class="help-button" onclick="openGuide()" aria-label="EVA-Spickzettel öffnen">?</button></header>
 <main id="main" tabindex="-1"></main><footer><span>EVA-Labor · Informatik zum Ausprobieren</span><button onclick="openSave()">Spielstand & Highscores</button><span id="storageStatus" role="status">Lokal gespeichert</span></footer>
@@ -123,4 +127,183 @@ document.addEventListener('keydown',e=>{if(!game||$('#dialog').open||/INPUT|TEXT
 document.addEventListener('keyup',e=>{if(['ArrowLeft','ArrowRight'].includes(e.key))held=0;});
 window.addEventListener('blur',()=>{held=0;clearInterval(holdTimer);if(game?.status==='play')togglePause();});
 render();
+</script><script>
+/* Original EVA arcade compositions. Synthesised locally; no audio downloads. */
+const ArcadeMusic = (() => {
+  const KEY = 'eva-labor-audio-v1';
+  let enabled = true, volume = .22, ctx = null, bus = null, timer = null;
+  let current = null, generation = 0, step = 0, nextTime = 0, unavailable = false;
+  const voices = new Set();
+  try {
+    const p = JSON.parse(localStorage.getItem(KEY));
+    if (typeof p?.enabled === 'boolean') enabled = p.enabled;
+    if (Number.isFinite(p?.volume)) volume = Math.max(0, Math.min(1, p.volume));
+  } catch (_) {}
+  const tracks = {
+    catch: {
+      name: 'Pixel Sprint', bpm: 116,
+      roots: [48, 45, 53, 55, 48, 45, 53, 55],
+      chords: [[0,4,7],[0,3,7],[0,4,7],[0,4,7]],
+      melody: [
+        [72,0,76,79,0,76,74,0,72,0,67,0,69,72,0,0],
+        [69,0,72,76,0,79,76,0,72,0,71,69,0,67,0,0],
+        [77,0,76,72,0,69,72,0,77,0,81,79,0,77,0,0],
+        [74,0,79,0,77,74,71,0,67,0,71,74,0,79,0,0],
+        [79,0,76,72,0,74,76,0,84,0,79,76,0,74,0,0],
+        [76,0,72,69,0,72,76,0,79,0,76,72,0,71,0,0],
+        [77,0,81,79,0,77,76,0,72,0,69,72,0,77,0,0],
+        [79,0,77,74,0,71,74,0,79,77,74,71,0,67,0,0]
+      ]
+    },
+    blocks: {
+      name: 'Stack Circuit', bpm: 128,
+      roots: [50,46,53,48,50,46,53,48],
+      chords: [[0,3,7],[0,4,7],[0,4,7],[0,4,7]],
+      melody: [
+        [74,0,0,77,81,0,77,0,76,0,74,0,69,0,72,0],
+        [70,0,74,0,77,0,0,74,82,0,77,0,74,0,72,0],
+        [72,0,0,77,81,0,79,0,77,0,76,0,72,0,69,0],
+        [76,0,79,0,84,0,0,79,76,0,74,72,0,67,0,0],
+        [81,0,77,0,74,0,0,76,77,0,81,0,84,81,0,0],
+        [82,0,77,0,74,0,0,70,74,0,77,0,79,77,0,0],
+        [81,0,79,77,0,76,0,72,77,0,81,0,79,0,77,0],
+        [79,0,76,0,72,0,74,76,79,0,76,72,0,69,0,0]
+      ]
+    }
+  };
+  function persist() {
+    try { localStorage.setItem(KEY, JSON.stringify({enabled, volume})); } catch (_) {}
+  }
+  function voice(node, envelope, at, duration) {
+    node.connect(envelope); envelope.connect(bus);
+    voices.add(node);
+    node.onended = () => { voices.delete(node); node.disconnect(); envelope.disconnect(); };
+    node.start(at); node.stop(at + duration);
+  }
+  function note(midi, at, duration, level, type = 'square') {
+    const osc = ctx.createOscillator(), gain = ctx.createGain();
+    osc.type = type; osc.frequency.setValueAtTime(440 * 2 ** ((midi - 69) / 12), at);
+    gain.gain.setValueAtTime(0, at);
+    gain.gain.linearRampToValueAtTime(level, at + .008);
+    gain.gain.exponentialRampToValueAtTime(.0001, at + duration);
+    voice(osc, gain, at, duration + .01);
+  }
+  function kick(at) {
+    const osc = ctx.createOscillator(), gain = ctx.createGain();
+    osc.frequency.setValueAtTime(130, at);
+    osc.frequency.exponentialRampToValueAtTime(42, at + .12);
+    gain.gain.setValueAtTime(.24, at);
+    gain.gain.exponentialRampToValueAtTime(.0001, at + .17);
+    voice(osc, gain, at, .18);
+  }
+  let noise = null;
+  function drum(at, snare) {
+    if (!noise) {
+      noise = ctx.createBuffer(1, Math.ceil(ctx.sampleRate * .14), ctx.sampleRate);
+      const data = noise.getChannelData(0);
+      // Deterministic noise keeps the percussion reproducible.
+      let seed = 173;
+      for (let i = 0; i < data.length; i++) {
+        seed = (1664525 * seed + 1013904223) >>> 0;
+        data[i] = seed / 2147483648 - 1;
+      }
+    }
+    const source = ctx.createBufferSource(), gain = ctx.createGain(), filter = ctx.createBiquadFilter();
+    source.buffer = noise; filter.type = 'highpass'; filter.frequency.value = snare ? 1100 : 7000;
+    source.connect(filter); filter.connect(gain); gain.connect(bus);
+    const duration = snare ? .12 : .035;
+    gain.gain.setValueAtTime(snare ? .12 : .045, at);
+    gain.gain.exponentialRampToValueAtTime(.0001, at + duration);
+    voices.add(source);
+    source.onended = () => { voices.delete(source); source.disconnect(); filter.disconnect(); gain.disconnect(); };
+    source.start(at); source.stop(at + duration);
+  }
+  function schedule(track, index, at) {
+    const bar = Math.floor(index / 16) % 8, beat = index % 16, length = 60 / track.bpm / 4;
+    const root = track.roots[bar], chord = track.chords[bar % 4];
+    const melody = track.melody[bar][beat];
+    if (melody) note(melody, at, length * 1.35, .065);
+    if (beat % 4 === 0) note(root - 12, at, length * 2.8, .16, 'triangle');
+    if (beat % 2 === 1) note(root + 12 + chord[Math.floor(beat / 2) % 3], at, length * .75, .04, 'triangle');
+    if (beat === 0 || beat === 8 || (current === 'blocks' && beat === 14)) kick(at);
+    if (beat === 4 || beat === 12) drum(at, true);
+    if (beat % 2 === 0) drum(at, false);
+  }
+  function stop() {
+    generation++; current = null;
+    clearInterval(timer); timer = null;
+    if (ctx && bus) {
+      const old = bus; bus = null;
+      old.gain.cancelScheduledValues(ctx.currentTime);
+      old.gain.setTargetAtTime(0, ctx.currentTime, .008);
+      for (const node of voices) { try { node.stop(ctx.currentTime + .04); } catch (_) {} }
+      setTimeout(() => old.disconnect(), 80);
+    }
+  }
+  async function start(kind) {
+    if (current === kind) return;
+    stop(); current = kind;
+    const token = generation;
+    try {
+      const Audio = window.AudioContext || window.webkitAudioContext;
+      if (!Audio) throw new Error('Web Audio unavailable');
+      if (!ctx) ctx = new Audio();
+      if (ctx.state !== 'running') await ctx.resume();
+      if (token !== generation || current !== kind) return;
+      bus = ctx.createGain(); bus.gain.value = volume * .65; bus.connect(ctx.destination);
+      step = 0; nextTime = ctx.currentTime + .035;
+      const track = tracks[kind];
+      const pump = () => {
+        // Skip a stalled scheduler instead of playing a burst of late notes.
+        if (nextTime < ctx.currentTime) nextTime = ctx.currentTime + .02;
+        while (nextTime < ctx.currentTime + .14) {
+          schedule(track, step++, nextTime);
+          nextTime += 60 / track.bpm / 4;
+        }
+      };
+      pump(); timer = setInterval(pump, 25);
+    } catch (_) { unavailable = true; stop(); update(); }
+  }
+  function sync() {
+    if (enabled && !unavailable && game?.status === 'play' && !document.hidden) start(game.kind);
+    else stop();
+    update();
+  }
+  function update() {
+    const button = document.getElementById('musicToggle');
+    if (!button) return;
+    button.textContent = unavailable ? 'Musik nicht verfügbar' : enabled ? '♫ Musik an' : '♫ Musik aus';
+    button.setAttribute('aria-pressed', String(enabled && !unavailable));
+    button.disabled = unavailable;
+    document.getElementById('musicVolume').disabled = unavailable;
+    document.getElementById('musicValue').textContent = Math.round(volume * 100) + '%';
+  }
+  function mount() {
+    const top = document.querySelector('.arena-top');
+    if (!top || document.getElementById('musicToggle')) return;
+    const controls = document.createElement('div'); controls.className = 'arcade-music';
+    controls.innerHTML = '<button class="button secondary" id="musicToggle" type="button"></button><label for="musicVolume">Lautstärke</label><input id="musicVolume" type="range" min="0" max="100" step="1" aria-label="Musiklautstärke"><span id="musicValue"></span><small>Original: ' + tracks[game.kind].name + '</small>';
+    top.after(controls);
+    const slider = document.getElementById('musicVolume'); slider.value = Math.round(volume * 100);
+    document.getElementById('musicToggle').addEventListener('click', () => { enabled = !enabled; persist(); sync(); });
+    slider.addEventListener('input', () => {
+      volume = Number(slider.value) / 100;
+      if (bus) bus.gain.setTargetAtTime(volume * .65, ctx.currentTime, .02);
+      persist(); update();
+    });
+    update();
+  }
+  return {sync, stop, mount};
+})();
+// Keep music tied to the existing game lifecycle, including tab and window pauses.
+const renderWithoutMusic = render;
+render = function() { renderWithoutMusic(); ArcadeMusic.mount(); };
+const overlayWithoutMusic = renderOverlay;
+renderOverlay = function() { overlayWithoutMusic(); ArcadeMusic.sync(); };
+const stopWithoutMusic = stopGame;
+stopGame = function() { ArcadeMusic.stop(); stopWithoutMusic(); };
+window.addEventListener('pagehide', () => ArcadeMusic.stop());
+ArcadeMusic.mount();
+
 </script></body></html>
+
