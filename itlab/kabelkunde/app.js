@@ -7,7 +7,7 @@ const TYPES = [
  ['micro','USB Micro-B','Sehr flach und asymmetrisch; seitliche Kanten abgeschrägt. Gezeigt ist die schmale USB-2.0-Bauform.','USB-A-Ladegerät → ältere Powerbank mit Micro-B-Eingang: USB-A–Micro-B-Kabel.','Je nach Gerät und Kabel Laden und USB-Daten. Der Stecker passt nur in einer Orientierung.'],
  ['hdmi','HDMI','Flaches, breites Profil mit abgeschrägten unteren Ecken. Gezeigt ist Standard-HDMI (Typ A).','PC mit HDMI-Ausgang → Fernseher mit HDMI-Eingang: HDMI–HDMI-Kabel.','Digitales Bild und Ton gemeinsam. Auflösung und Bildrate hängen von den Geräten und dem Kabel ab.'],
  ['dp','DisplayPort','Fast rechteckiges Profil mit nur einer abgeschrägten Ecke. Manche Stecker haben eine Rastung mit Entriegelungstaste. Gezeigt ist der grosse DisplayPort-Anschluss.','PC mit DisplayPort-Ausgang → Monitor mit DisplayPort-Eingang: DisplayPort–DisplayPort-Kabel.','Digitales Bild und Ton. Welche Auflösung und Bildrate möglich sind, hängt von den Geräten und dem Kabel ab.'],
- ['dvi','DVI','Breiter Anschluss mit einem Raster und einem seitlichen Flachkontakt. Oft mit Schrauben; hier DVI-D Single Link.','PC mit DVI-D-Ausgang → Monitor mit passendem DVI-D-Eingang: DVI-D–DVI-D-Kabel.','DVI-D überträgt digitales Bild. Ton ist nicht Teil des DVI-Standards. DVI-I kann zusätzlich analoge Bildsignale führen.'],
+ ['dvi','DVI','Breiter Anschluss mit einem Raster und einem seitlichen Flachkontakt. Oft mit Schrauben.','Älterer PC → Bildschirm mit passender DVI-Buchse: DVI-Kabel.','Die gezeigte DVI-Variante überträgt digitales Bild. Ton ist nicht Teil des DVI-Standards.'],
  ['vga','VGA','Trapezförmiger Anschluss mit 15 Pins oder Löchern in drei Reihen. Oft mit Schrauben.','Älterer PC mit VGA-Ausgang → Beamer mit VGA-Eingang: VGA–VGA-Kabel.','Analoges Bild, kein Ton. Die Bildqualität kann bei langen Kabeln oder hohen Auflösungen leiden.'],
  ['light','Lightning','Flacher, massiver Stecker mit offen liegenden Kontakten; in beiden Orientierungen einsteckbar. Die Buchse hat keine mittige USB-C-Zunge.','USB-C-Ladegerät → iPhone mit Lightning-Buchse: USB-C–Lightning-Kabel.','Laden und Daten, je nach Kabel und Gerät. Neuere iPhones verwenden teilweise USB-C; Buchse prüfen.'],
  ['lan','RJ45 (Ethernet)','Breites, rechteckiges Profil mit acht Kontaktpositionen und einer Rastlasche. In der Buchse ist eine Aussparung für die Lasche.','PC mit Ethernet-Buchse → LAN-Port am Router oder Switch: RJ45–RJ45-Netzwerkkabel.','Netzwerkdaten über Kupfer. RJ45 ist die gebräuchliche Bezeichnung für diesen 8P8C-Netzwerkstecker.']
@@ -49,23 +49,39 @@ function drawing(id, socket=false, label='Schematische Darstellung'){
  return `<svg viewBox="0 0 160 115" role="img" aria-label="${label}" xmlns="http://www.w3.org/2000/svg">${s}</svg>`;
 }
 const LINK_CASES=[
- ['Eine Tastatur hat einen fest montierten USB-A-Stecker. Wo stecken Sie ihn ein?','USB-A-Buchse am PC',['USB-B-Buchse am Drucker','HDMI-Buchse am Monitor','Ethernet-Buchse am Router'],'USB-A ist die passende Buchse. Eine gewöhnliche Tastatur benötigt kein SuperSpeed.'],
- ['PC mit USB-A → Drucker mit quadratischer USB-B-Buchse.','USB-A ↔ USB-B',['USB-A ↔ USB-C','USB-A ↔ Micro-B','USB-A ↔ HDMI'],'USB-A passt in den PC; der fast quadratische USB-B-Stecker passt in den Drucker.'],
- ['USB-C-Ladegerät → Smartphone mit USB-C-Buchse.','USB-C ↔ USB-C',['USB-C ↔ Lightning','USB-A ↔ USB-C','USB-A ↔ Micro-B'],'Beide Enden sind USB-C. Für die Ladeleistung zählen zusätzlich die Fähigkeiten von Ladegerät, Kabel und Smartphone.'],
- ['USB-A-Ladegerät → ältere Powerbank mit Micro-B-Ladeeingang.','USB-A ↔ Micro-B',['USB-A ↔ USB-B','USB-A ↔ USB-C','USB-C ↔ Lightning'],'Der breite Stecker kommt ans Ladegerät, der flache asymmetrische Micro-B-Stecker an die Powerbank.'],
- ['PC mit HDMI-Ausgang → TV mit HDMI-Eingang. Bild und Ton sollen über ein Kabel laufen.','HDMI ↔ HDMI',['VGA ↔ VGA','DVI-D ↔ DVI-D','RJ45 ↔ RJ45'],'HDMI überträgt Bild und Ton digital.'],
- ['Ein PC hat einen DisplayPort-Ausgang. Der Monitor hat einen DisplayPort-Eingang. Welches Kabel passt direkt?','DisplayPort ↔ DisplayPort',['HDMI ↔ HDMI','DVI-D ↔ DVI-D','USB-C ↔ USB-C'],'DisplayPort passt an beide Geräte und kann Bild und Ton übertragen.'],
- ['Älterer PC mit DVI-D-Ausgang → Monitor mit passendem DVI-D-Eingang.','DVI-D ↔ DVI-D',['VGA ↔ VGA','HDMI ↔ HDMI','USB-A ↔ USB-B'],'DVI-D passt an beide Geräte und liefert digitales Bild.'],
- ['Alter PC mit VGA-Ausgang → Beamer mit VGA-Eingang.','VGA ↔ VGA',['HDMI ↔ HDMI','DVI-D ↔ DVI-D','USB-C ↔ USB-C'],'VGA liefert analoges Bild. Für Ton braucht es eine separate Verbindung.'],
- ['USB-C-Ladegerät → iPhone mit Lightning-Buchse.','USB-C ↔ Lightning',['USB-C ↔ USB-C','USB-A ↔ Lightning','USB-C ↔ Micro-B'],'Das Ladegerät benötigt USB-C; am iPhone passt der flache Lightning-Stecker.'],
- ['PC mit Ethernet-Buchse → LAN-Buchse am Router.','RJ45 ↔ RJ45',['HDMI ↔ HDMI','USB-A ↔ USB-B','VGA ↔ VGA'],'Das Ethernet-Kabel verbindet PC und Router über die beiden RJ45-Buchsen. Die Lasche rastet ein.'],
- ['Externe SSD mit USB-C → PC mit SuperSpeed-fähigem USB-A. Welche Wahl ermöglicht USB 3.0, wenn beide Geräte es unterstützen?','USB-A ↔ USB-C, Kabel für mindestens 5 Gbit/s',['USB-A ↔ USB-C, Kabel nur für USB 2.0','USB-C ↔ USB-C ohne Adapter','USB-A ↔ USB-B für USB 3.0'],'Die Stecker müssen passen, und auch das Kabel muss die Übertragungsrate unterstützen.']
+ ['Verbinden Sie den Computer mit dem Drucker.',['Computer','Drucker'],['pc','printer'],['a','b'],[['a','c'],['a','micro'],['hdmi','hdmi']],'USB-A passt in den Computer, USB-B in den Drucker. Das Kabel überträgt Druckdaten.'],
+ ['Verbinden Sie das Smartphone zum Laden mit dem Computer.',['Computer','Smartphone'],['pc','phone'],['a','c'],[['a','b'],['a','micro'],['c','c']],'USB-A passt in den Computer, USB-C ins Smartphone.'],
+ ['Verbinden Sie das Smartphone mit dem Ladegerät.',['Ladegerät','Smartphone'],['charger','phone'],['c','c'],[['c','light'],['a','c'],['a','micro']],'Beide Buchsen haben dieselbe USB-C-Form.'],
+ ['Laden Sie die ältere Powerbank am Ladegerät auf.',['Ladegerät','Powerbank'],['charger','drive'],['a','micro'],[['a','b'],['a','c'],['c','light']],'Das flache, asymmetrische Micro-B-Ende passt in die Powerbank.'],
+ ['Verbinden Sie den Computer mit dem Fernseher für Bild und Ton.',['Computer','Fernseher'],['pc','screen'],['hdmi','hdmi'],[['dp','dp'],['vga','vga'],['dvi','dvi']],'HDMI überträgt digitales Bild und Ton über dasselbe Kabel.'],
+ ['Verbinden Sie den Computer mit dem Monitor. Achten Sie auf die abgeschrägte Ecke.',['Computer','Monitor'],['pc','screen'],['dp','dp'],[['hdmi','hdmi'],['dvi','dvi'],['c','c']],'DisplayPort hat an der gezeigten Buchse nur eine abgeschrägte Ecke.'],
+ ['Verbinden Sie den älteren Computer mit diesem Bildschirm.',['Älterer Computer','Bildschirm'],['pc','screen'],['dvi','dvi'],[['vga','vga'],['hdmi','hdmi'],['a','b']],'Das Raster und der seitliche Flachkontakt gehören zum DVI-Stecker.'],
+ ['Verbinden Sie den älteren Computer mit dem Beamer.',['Älterer Computer','Beamer'],['pc','projector'],['vga','vga'],[['dvi','dvi'],['hdmi','hdmi'],['dp','dp']],'VGA erkennen Sie an der Trapezform und den drei Kontaktreihen.'],
+ ['Verbinden Sie das ältere iPhone mit dem Ladegerät.',['Ladegerät','Älteres iPhone'],['charger','phone'],['c','light'],[['c','c'],['a','light'],['c','micro']],'Der flache Lightning-Stecker passt ins iPhone.'],
+ ['Verbinden Sie den Computer per Netzwerkkabel mit dem Router.',['Computer','Router'],['pc','router'],['lan','lan'],[['hdmi','hdmi'],['a','b'],['vga','vga']],'RJ45 passt in beide Ethernet-Buchsen. Die Lasche rastet ein.'],
+ ['Verbinden Sie den Computer und die externe SSD so, dass USB 3.0 genutzt werden kann. Beide Geräte unterstützen es.',['Computer','Externe SSD'],['pc','drive'],['a3','c'],[['a','c'],['c','c'],['a3','b']],'USB-A passt auch als USB-2.0-Ausführung. Für USB 3.0 braucht es hier das gezeigte Kabel mit den zusätzlichen SuperSpeed-Kontakten.']
 ];
+const deviceArt={
+ pc:'<rect x="25" y="13" width="69" height="45" rx="5"/><path d="M59 58v9m-16 0h33M34 22h51v27H34z"/><rect x="101" y="13" width="22" height="55" rx="4"/><path d="M107 25h10m-5 27v1"/>',
+ printer:'<path d="M51 33V12h48v21M48 64H33V34h84v30h-15"/><path d="M49 52h53v20H49zM48 48h56m0-7h4"/>',
+ screen:'<rect x="24" y="13" width="102" height="49" rx="5"/><path d="M34 22h82v30H34zM75 62v9m-18 0h36"/>',
+ charger:'<path d="M60 23V10m30 13V10"/><rect x="48" y="24" width="54" height="44" rx="8"/><path d="M67 58h16"/>',
+ phone:'<rect x="56" y="8" width="38" height="65" rx="7"/><path d="M62 19h26v43H62zM71 14h8m-7 53h6"/>',
+ drive:'<rect x="40" y="19" width="70" height="46" rx="8"/><path d="M52 31h46m-46 8h46m-46 8h26m15 8h6"/>',
+ projector:'<rect x="24" y="28" width="102" height="34" rx="7"/><circle cx="101" cy="45" r="10"/><circle cx="101" cy="45" r="5"/><path d="M36 40h33m-33 9h33m-27 14v5m64-5v5"/>',
+ router:'<rect x="26" y="42" width="98" height="23" rx="5"/><path d="M37 42V13m76 29V13M41 54h4m7 0h4m7 0h4m7 0h4"/>'
+};
+const plugName=(id)=>id==='a'?'USB-A (USB 2.0)':type[id][1];
+const cableName=pair=>pair.map(plugName).join(' ↔ ');
+const devicePairArt=(names,icons,ports)=>'<div class="device-pair" aria-label="Geräte mit Buchsen">'+names.map((name,i)=>`<figure class="device"><svg class="device-icon" viewBox="0 0 150 80" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">${deviceArt[icons[i]]}</g></svg><figcaption>${name}</figcaption><div class="socket">${drawing(ports[i],true,plugName(ports[i])+' als Buchse')}<span>Buchse</span></div></figure>`).join('')+'</div>';
+const connectionQuestions=()=>LINK_CASES.map(([title,names,icons,pair,alternatives,why])=>{
+ const cables=[pair,...alternatives];return {title,answer:cableName(pair),options:cables.map(cableName),cables:Object.fromEntries(cables.map(p=>[cableName(p),p])),devices:devicePairArt(names,icons,pair),why};
+});
 const COMPARE=[
  ['USB-A oder USB 3.0: Welche Aussage stimmt?','USB-A bezeichnet die Form, USB 3.0 einen Standard.',['USB-A ist immer langsamer als USB 3.0.','Jede USB-A-Buchse unterstützt USB 3.0.','USB 3.0 ist die runde Steckerform.'],'USB-A gibt es mit verschiedenen Übertragungsstandards. Vergleichen Sie USB 2.0 mit USB 3.0.'],
  ['Wie schnell sind USB 2.0 High-Speed und USB 3.0 theoretisch maximal?','480 Mbit/s und 5 Gbit/s',['Beide 480 Mbit/s.','5 Gbit/s und 480 Mbit/s','480 MB/s und 5 MB/s'],'USB 3.0 hat eine rund zehnmal höhere theoretische Signaldatenrate. Die effektive Dateikopiergeschwindigkeit ist tiefer.'],
  ['Sie sehen eine blaue USB-A-Buchse. Was wissen Sie sicher?','Die Farbe allein beweist das Tempo nicht.',['Blau bedeutet immer genau 5 Gbit/s.','Blau bedeutet immer USB 2.0.','Blau bedeutet USB-C.'],'Achten Sie auf Kennzeichnungen wie SuperSpeed oder Angaben des Herstellers.'],
- ['Was unterscheidet HDMI von DVI-D und VGA?','HDMI überträgt standardmässig Bild und Ton.',['VGA überträgt Ton, HDMI nur Bild.','Alle drei übertragen Ton.','DVI-D überträgt analoges Bild und Ton.'],'HDMI: digitales Bild und Ton. DVI-D: digitales Bild. VGA: analoges Bild. Ton ist bei DVI und VGA nicht Teil des Standards.'],
+ ['Was unterscheidet HDMI von DVI und VGA?','HDMI überträgt standardmässig Bild und Ton.',['VGA überträgt Ton, HDMI nur Bild.','Alle drei übertragen Ton.','DVI und VGA übertragen immer auch Ton.'],'HDMI: digitales Bild und Ton. Gezeigtes DVI: digitales Bild. VGA: analoges Bild. Ton ist bei DVI und VGA nicht Teil des Standards.'],
  ['Ein Stecker ist fast rechteckig und hat nur eine abgeschrägte Ecke. Woran erkennen Sie den Unterschied zu HDMI (Typ A)?','DisplayPort hat eine abgeschrägte Ecke; HDMI (Typ A) zwei.',['DisplayPort hat immer einen runden Stecker.','HDMI und DisplayPort haben die gleiche Form.','DisplayPort überträgt nur Ton, HDMI nur Bild.'],'Die Form hilft beim Unterscheiden. Beide können digitales Bild und Ton übertragen.'],
  ['Die USB-C-Stecker passen. Ist Bildausgabe damit garantiert?','Nein, Geräte und Kabel müssen die Bildfunktion unterstützen.',['Ja, USB-C bedeutet immer Bild und Ton.','Ja, solange sich ein Gerät laden lässt.','Nein, USB-C kann grundsätzlich kein Bild übertragen.'],'Die symmetrische Bauform sagt nichts über die unterstützten Funktionen aus.'],
  ['Passt Lightning in USB-C?','Nein. Beide sind wendbar, aber verschieden gebaut.',['Ja, wenn der Stecker umgedreht wird.','Ja, wenn das Ladegerät genügend Leistung hat.','Ja, beide Namen meinen dieselbe Buchse.'],'Lightning hat einen flachen Stecker mit freiliegenden Kontakten; USB-C hat eine andere Form mit Kontaktzunge in der Buchse.']
@@ -77,10 +93,10 @@ const questions=()=>TYPES.flatMap(([id,name,feature])=>[false,true].map(socket=>
  options:[name,...(['a','a3'].includes(id)?[type[id==='a'?'a3':'a'][1],...shuffle(TYPES.filter(t=>!['a','a3'].includes(t[0]))).slice(0,2).map(t=>t[1])]:shuffle(TYPES.filter(t=>t[0]!==id)).slice(0,3).map(t=>t[1]))],why:feature
 })));
 const fromCases=rows=>rows.map(([title,answer,wrong,why])=>({title,answer,options:[answer,...wrong],why}));
-if(typeof module!=='undefined')module.exports={TYPES,drawing,questions,LINK_CASES,COMPARE,fromCases};
+if(typeof module!=='undefined')module.exports={TYPES,drawing,questions,LINK_CASES,COMPARE,fromCases,connectionQuestions};
 if(typeof document!=='undefined')(() => {
  const $=id=>document.getElementById(id);
- const key='itlab-kabelkunde-v1', boards=[['recognition',questions,TYPES.length*2,18],['connections',()=>fromCases(LINK_CASES),LINK_CASES.length,9],['comparison',()=>fromCases(COMPARE),COMPARE.length,6]];
+ const key='itlab-kabelkunde-v1', boards=[['recognition',questions,TYPES.length*2,18],['connections',connectionQuestions,LINK_CASES.length,9],['comparison',()=>fromCases(COMPARE),COMPARE.length,6]];
  const state={best:{},bestDisplayPort:{},checks:[]};
  try{const old=JSON.parse(localStorage.getItem(key)||'null');boards.forEach(([id,,max])=>{const n=old?.bestDisplayPort?.[id];if(Number.isInteger(n))state.bestDisplayPort[id]=Math.max(0,Math.min(n,max));const previous=old?.best?.[id];if(Number.isInteger(previous)&&previous>0)state.best[id]=previous;});state.checks=[0,1,2,3].map(i=>old?.checks?.[i]===true);}catch{}
  const legacyGoals={recognition:16,connections:8,comparison:5};
@@ -97,17 +113,23 @@ if(typeof document!=='undefined')(() => {
  boards.forEach(([id,make,max,goal])=>{
   const el=$(id);
   let round=[],index=0,score=0,missed=[],locked=false;
-  const start=()=>{round=shuffle(make());index=score=0;missed=[];render();};
+  const start=()=>{const tasks=make();round=id==='connections'?[tasks[0],...shuffle(tasks.slice(1))]:shuffle(tasks);index=score=0;missed=[];render();};
   const intro=()=>{el.innerHTML=`<p class="counter">${max} Aufgaben · bestanden ab ${goal} richtig · Bestresultat: ${state.bestDisplayPort[id]??'–'}/${max}</p>${state.best[id]?`<p class="subtle">Bestresultat vor der Ergänzung von DisplayPort: ${state.best[id]} richtig.</p>`:''}<button type="button" class="btn">Spiel starten</button>`;el.querySelector('button').onclick=start;};
   function render(){
    const q=round[index];locked=false;
-   el.innerHTML=`<p class="counter">Aufgabe ${index+1} / ${round.length} · ${score} richtig</p><h3 tabindex="-1">${q.title}</h3>${q.art?`<div class="single">${q.art}</div>`:''}<div class="answers"></div><div class="feedback" role="status" hidden></div><button type="button" class="btn next" hidden>${index===round.length-1?'Ergebnis anzeigen':'Weiter →'}</button>`;
+   el.innerHTML=`<p class="counter">Aufgabe ${index+1} / ${round.length} · ${score} richtig</p><h3 tabindex="-1">${q.title}</h3>${q.art?`<div class="single">${q.art}</div>`:''}${q.devices||''}<div class="answers ${q.cables?'cable-answers':''}"></div><div class="feedback" role="status" hidden></div><button type="button" class="btn next" hidden>${index===round.length-1?'Ergebnis anzeigen':'Weiter →'}</button>`;
    const answerArea=el.querySelector('.answers'),feedback=el.querySelector('.feedback'),next=el.querySelector('.next');
-   for(const option of shuffle(q.options)){
-    const b=document.createElement('button');b.type='button';b.textContent=option;b.onclick=()=>{
+   for(const [position,option] of shuffle(q.options).entries()){
+    const b=document.createElement('button');b.type='button';b.dataset.option=option;
+    if(q.cables){
+     const label='Kabel '+String.fromCharCode(65+position),[left,right]=q.cables[option];
+     b.setAttribute('aria-label',label+': '+option);
+     b.innerHTML=`<span class="cable-label">${label}</span><span class="cable-ends" aria-hidden="true">${drawing(left)}<span class="cable-wire"></span>${drawing(right)}</span>`;
+    }else b.textContent=option;
+    b.onclick=()=>{
      if(locked)return;locked=true;
      const correct=option===q.answer;if(correct)score++;else missed.push(q);
-     for(const choice of answerArea.children){choice.disabled=true;if(choice.textContent===q.answer)choice.classList.add('good');}
+     for(const choice of answerArea.children){choice.disabled=true;if(choice.dataset.option===q.answer)choice.classList.add('good');}
      if(!correct)b.classList.add('bad');
      feedback.classList.add(correct?'good':'bad');feedback.hidden=false;feedback.textContent=(correct?'Richtig. ':'Richtig ist: '+q.answer+'. ')+q.why;next.hidden=false;
     };answerArea.append(b);
