@@ -6,6 +6,7 @@ const TYPES = [
  ['c','USB-C','Kleine, symmetrische Form mit runden Enden. In der Buchse sitzt mittig eine Kontaktzunge. Der Stecker passt in beiden Orientierungen.','USB-C-Ladegerät → Smartphone mit USB-C: USB-C–USB-C-Kabel.','Strom und je nach Ausstattung Daten und Bild. Die Form allein verrät weder Tempo noch Ladeleistung noch Bildfähigkeit.'],
  ['micro','USB Micro-B','Sehr flach und asymmetrisch; seitliche Kanten abgeschrägt. Gezeigt ist die schmale USB-2.0-Bauform.','USB-A-Ladegerät → ältere Powerbank mit Micro-B-Eingang: USB-A–Micro-B-Kabel.','Je nach Gerät und Kabel Laden und USB-Daten. Der Stecker passt nur in einer Orientierung.'],
  ['hdmi','HDMI','Flaches, breites Profil mit abgeschrägten unteren Ecken. Gezeigt ist Standard-HDMI (Typ A).','PC mit HDMI-Ausgang → Fernseher mit HDMI-Eingang: HDMI–HDMI-Kabel.','Digitales Bild und Ton gemeinsam. Auflösung und Bildrate hängen von den Geräten und dem Kabel ab.'],
+ ['dp','DisplayPort','Fast rechteckiges Profil mit nur einer abgeschrägten Ecke. Manche Stecker haben eine Rastung mit Entriegelungstaste. Gezeigt ist der grosse DisplayPort-Anschluss.','PC mit DisplayPort-Ausgang → Monitor mit DisplayPort-Eingang: DisplayPort–DisplayPort-Kabel.','Digitales Bild und Ton. Welche Auflösung und Bildrate möglich sind, hängt von den Geräten und dem Kabel ab.'],
  ['dvi','DVI','Breiter Anschluss mit einem Raster und einem seitlichen Flachkontakt. Oft mit Schrauben; hier DVI-D Single Link.','PC mit DVI-D-Ausgang → Monitor mit passendem DVI-D-Eingang: DVI-D–DVI-D-Kabel.','DVI-D überträgt digitales Bild. Ton ist nicht Teil des DVI-Standards. DVI-I kann zusätzlich analoge Bildsignale führen.'],
  ['vga','VGA','Trapezförmiger Anschluss mit 15 Pins oder Löchern in drei Reihen. Oft mit Schrauben.','Älterer PC mit VGA-Ausgang → Beamer mit VGA-Eingang: VGA–VGA-Kabel.','Analoges Bild, kein Ton. Die Bildqualität kann bei langen Kabeln oder hohen Auflösungen leiden.'],
  ['light','Lightning','Flacher, massiver Stecker mit offen liegenden Kontakten; in beiden Orientierungen einsteckbar. Die Buchse hat keine mittige USB-C-Zunge.','USB-C-Ladegerät → iPhone mit Lightning-Buchse: USB-C–Lightning-Kabel.','Laden und Daten, je nach Kabel und Gerät. Neuere iPhones verwenden teilweise USB-C; Buchse prüfen.'],
@@ -32,6 +33,8 @@ function drawing(id, socket=false, label='Schematische Darstellung'){
    s=shape(h?'M23 36H137V64L124 81H36L23 64Z':'M35 45H125L117 72H43Z',metal)+shape(h?'M30 43H130V62L120 74H40L30 62Z':'M43 51H117L111 66H49Z',socket?'#112523':light);
    s+=rect(h?39:52,h?52:55,h?82:56,h?14:7,2,socket?light:dark)+contacts(h?10:5,h?43:55,h?54:55,h?8:11,h?3:5,h?4:6);
    if(h)s+=contacts(9,47,60,8,3,4);
+ }else if(id==='dp'){
+   s=shape('M25 34H135V67L121 81H25Z',metal)+shape('M32 41H128V64L118 74H32Z',socket?'#112523':light)+rect(40,50,80,15,2,socket?light:dark)+contacts(10,44,51,7.6,3,4)+contacts(10,44,60,7.6,3,4);
  }else if(id==='dvi'||id==='vga'){
    const v=id==='vga';
    s=rect(12,34,136,49,8,'#aabfb7',dark)+dots(1,21,58,0,4)+dots(1,139,58,0,4);
@@ -51,6 +54,7 @@ const LINK_CASES=[
  ['USB-C-Ladegerät → Smartphone mit USB-C-Buchse.','USB-C ↔ USB-C',['USB-C ↔ Lightning','USB-A ↔ USB-C','USB-A ↔ Micro-B'],'Beide Enden sind USB-C. Für die Ladeleistung zählen zusätzlich die Fähigkeiten von Ladegerät, Kabel und Smartphone.'],
  ['USB-A-Ladegerät → ältere Powerbank mit Micro-B-Ladeeingang.','USB-A ↔ Micro-B',['USB-A ↔ USB-B','USB-A ↔ USB-C','USB-C ↔ Lightning'],'Der breite Stecker kommt ans Ladegerät, der flache asymmetrische Micro-B-Stecker an die Powerbank.'],
  ['PC mit HDMI-Ausgang → TV mit HDMI-Eingang. Bild und Ton sollen über ein Kabel laufen.','HDMI ↔ HDMI',['VGA ↔ VGA','DVI-D ↔ DVI-D','RJ45 ↔ RJ45'],'HDMI überträgt Bild und Ton digital.'],
+ ['Ein PC hat einen DisplayPort-Ausgang. Der Monitor hat einen DisplayPort-Eingang. Welches Kabel passt direkt?','DisplayPort ↔ DisplayPort',['HDMI ↔ HDMI','DVI-D ↔ DVI-D','USB-C ↔ USB-C'],'DisplayPort passt an beide Geräte und kann Bild und Ton übertragen.'],
  ['Älterer PC mit DVI-D-Ausgang → Monitor mit passendem DVI-D-Eingang.','DVI-D ↔ DVI-D',['VGA ↔ VGA','HDMI ↔ HDMI','USB-A ↔ USB-B'],'DVI-D passt an beide Geräte und liefert digitales Bild.'],
  ['Alter PC mit VGA-Ausgang → Beamer mit VGA-Eingang.','VGA ↔ VGA',['HDMI ↔ HDMI','DVI-D ↔ DVI-D','USB-C ↔ USB-C'],'VGA liefert analoges Bild. Für Ton braucht es eine separate Verbindung.'],
  ['USB-C-Ladegerät → iPhone mit Lightning-Buchse.','USB-C ↔ Lightning',['USB-C ↔ USB-C','USB-A ↔ Lightning','USB-C ↔ Micro-B'],'Das Ladegerät benötigt USB-C; am iPhone passt der flache Lightning-Stecker.'],
@@ -62,6 +66,7 @@ const COMPARE=[
  ['Wie schnell sind USB 2.0 High-Speed und USB 3.0 theoretisch maximal?','480 Mbit/s und 5 Gbit/s',['Beide 480 Mbit/s.','5 Gbit/s und 480 Mbit/s','480 MB/s und 5 MB/s'],'USB 3.0 hat eine rund zehnmal höhere theoretische Signaldatenrate. Die effektive Dateikopiergeschwindigkeit ist tiefer.'],
  ['Sie sehen eine blaue USB-A-Buchse. Was wissen Sie sicher?','Die Farbe allein beweist das Tempo nicht.',['Blau bedeutet immer genau 5 Gbit/s.','Blau bedeutet immer USB 2.0.','Blau bedeutet USB-C.'],'Achten Sie auf Kennzeichnungen wie SuperSpeed oder Angaben des Herstellers.'],
  ['Was unterscheidet HDMI von DVI-D und VGA?','HDMI überträgt standardmässig Bild und Ton.',['VGA überträgt Ton, HDMI nur Bild.','Alle drei übertragen Ton.','DVI-D überträgt analoges Bild und Ton.'],'HDMI: digitales Bild und Ton. DVI-D: digitales Bild. VGA: analoges Bild. Ton ist bei DVI und VGA nicht Teil des Standards.'],
+ ['Ein Stecker ist fast rechteckig und hat nur eine abgeschrägte Ecke. Woran erkennen Sie den Unterschied zu HDMI (Typ A)?','DisplayPort hat eine abgeschrägte Ecke; HDMI (Typ A) zwei.',['DisplayPort hat immer einen runden Stecker.','HDMI und DisplayPort haben die gleiche Form.','DisplayPort überträgt nur Ton, HDMI nur Bild.'],'Die Form hilft beim Unterscheiden. Beide können digitales Bild und Ton übertragen.'],
  ['Die USB-C-Stecker passen. Ist Bildausgabe damit garantiert?','Nein, Geräte und Kabel müssen die Bildfunktion unterstützen.',['Ja, USB-C bedeutet immer Bild und Ton.','Ja, solange sich ein Gerät laden lässt.','Nein, USB-C kann grundsätzlich kein Bild übertragen.'],'Die symmetrische Bauform sagt nichts über die unterstützten Funktionen aus.'],
  ['Passt Lightning in USB-C?','Nein. Beide sind wendbar, aber verschieden gebaut.',['Ja, wenn der Stecker umgedreht wird.','Ja, wenn das Ladegerät genügend Leistung hat.','Ja, beide Namen meinen dieselbe Buchse.'],'Lightning hat einen flachen Stecker mit freiliegenden Kontakten; USB-C hat eine andere Form mit Kontaktzunge in der Buchse.']
 ];
@@ -75,10 +80,11 @@ const fromCases=rows=>rows.map(([title,answer,wrong,why])=>({title,answer,option
 if(typeof module!=='undefined')module.exports={TYPES,drawing,questions,LINK_CASES,COMPARE,fromCases};
 if(typeof document!=='undefined')(() => {
  const $=id=>document.getElementById(id);
- const key='itlab-kabelkunde-v1', boards=[['recognition',questions,20,16],['connections',()=>fromCases(LINK_CASES),10,8],['comparison',()=>fromCases(COMPARE),6,5]];
- const state={best:{},checks:[]};
- try{const old=JSON.parse(localStorage.getItem(key)||'null');boards.forEach(([id,,max])=>{const n=old?.best?.[id];state.best[id]=Number.isInteger(n)?Math.max(0,Math.min(n,max)):0;});state.checks=[0,1,2,3].map(i=>old?.checks?.[i]===true);}catch{}
- const update=()=>{$('progress').textContent=boards.filter(([id,,,goal])=>state.best[id]>=goal).length+' / 3 Spielstationen bestanden';};
+ const key='itlab-kabelkunde-v1', boards=[['recognition',questions,TYPES.length*2,18],['connections',()=>fromCases(LINK_CASES),LINK_CASES.length,9],['comparison',()=>fromCases(COMPARE),COMPARE.length,6]];
+ const state={best:{},bestDisplayPort:{},checks:[]};
+ try{const old=JSON.parse(localStorage.getItem(key)||'null');boards.forEach(([id,,max])=>{const n=old?.bestDisplayPort?.[id];if(Number.isInteger(n))state.bestDisplayPort[id]=Math.max(0,Math.min(n,max));const previous=old?.best?.[id];if(Number.isInteger(previous)&&previous>0)state.best[id]=previous;});state.checks=[0,1,2,3].map(i=>old?.checks?.[i]===true);}catch{}
+ const legacyGoals={recognition:16,connections:8,comparison:5};
+ const update=()=>{$('progress').textContent=boards.filter(([id,,,goal])=>(state.bestDisplayPort[id]>=goal || state.best[id]>=legacyGoals[id])).length+' / 3 Spielstationen bestanden';};
  const save=()=>{try{localStorage.setItem(key,JSON.stringify(state));$('save').textContent='Fortschritt in diesem Browser gespeichert.';}catch{$('save').textContent='Dieser Browser konnte den Fortschritt nicht speichern.';}update();};
  $('hero-art').innerHTML=['c','hdmi','lan','a3'].map(id=>drawing(id)).join('');
  TYPES.forEach(([id,name])=>{const b=document.createElement('button');b.textContent=name;b.onclick=()=>show(id);b.dataset.id=id;$('catalog-buttons').append(b);});
@@ -92,7 +98,7 @@ if(typeof document!=='undefined')(() => {
   const el=$(id);
   let round=[],index=0,score=0,missed=[],locked=false;
   const start=()=>{round=shuffle(make());index=score=0;missed=[];render();};
-  const intro=()=>{el.innerHTML=`<p class="counter">${max} Aufgaben · bestanden ab ${goal} richtig · Bestresultat: ${state.best[id]||0}/${max}</p><button type="button" class="btn">Spiel starten</button>`;el.querySelector('button').onclick=start;};
+  const intro=()=>{el.innerHTML=`<p class="counter">${max} Aufgaben · bestanden ab ${goal} richtig · Bestresultat: ${state.bestDisplayPort[id]??'–'}/${max}</p>${state.best[id]?`<p class="subtle">Bestresultat vor der Ergänzung von DisplayPort: ${state.best[id]} richtig.</p>`:''}<button type="button" class="btn">Spiel starten</button>`;el.querySelector('button').onclick=start;};
   function render(){
    const q=round[index];locked=false;
    el.innerHTML=`<p class="counter">Aufgabe ${index+1} / ${round.length} · ${score} richtig</p><h3 tabindex="-1">${q.title}</h3>${q.art?`<div class="single">${q.art}</div>`:''}<div class="answers"></div><div class="feedback" role="status" hidden></div><button type="button" class="btn next" hidden>${index===round.length-1?'Ergebnis anzeigen':'Weiter →'}</button>`;
@@ -110,13 +116,13 @@ if(typeof document!=='undefined')(() => {
    el.querySelector('h3').focus();
   }
   function finish(){
-   state.best[id]=Math.max(state.best[id]||0,score);save();
-   el.innerHTML=`<h3 tabindex="-1">${score>=goal?'✓ Bestanden':'Noch nicht bestanden'} · ${score}/${max} richtig</h3><p>Bestresultat: ${state.best[id]}/${max}. Ziel: mindestens ${goal} richtige Antworten.</p>${missed.length?`<details><summary>${missed.length} Fehler nachschauen</summary><ul>${missed.map(q=>`<li><b>${q.answer}</b>: ${q.why}</li>`).join('')}</ul></details>`:''}<button type="button" class="btn">Noch einmal spielen</button>`;
+   state.bestDisplayPort[id]=Math.max(state.bestDisplayPort[id]||0,score);save();
+   el.innerHTML=`<h3 tabindex="-1">${score>=goal?'✓ Bestanden':'Noch nicht bestanden'} · ${score}/${max} richtig</h3><p>Bestresultat: ${state.bestDisplayPort[id]}/${max}. Ziel: mindestens ${goal} richtige Antworten.</p>${missed.length?`<details><summary>${missed.length} Fehler nachschauen</summary><ul>${missed.map(q=>`<li><b>${q.answer}</b>: ${q.why}</li>`).join('')}</ul></details>`:''}<button type="button" class="btn">Noch einmal spielen</button>`;
    el.querySelector('button').onclick=start;el.querySelector('h3').focus();
   }
   intro();
  });
- const checks=['Alle neun Anschlussarten sind enthalten; USB-A vergleicht USB 2.0 und USB 3.0.','Zu jeder Art stehen Steckermerkmal, Buchsenmerkmal und ein Gerätepaar auf dem Blatt.','Die Vergleiche zu USB-Tempo, USB-C und Bild/Ton sind fachlich richtig.','Ich habe das Ergebnis überprüft und als Word-Datei oder PDF gespeichert.'];
+ const checks=['Alle zehn Anschlussarten sind enthalten; USB-A vergleicht USB 2.0 und USB 3.0.','Zu jeder Art stehen Steckermerkmal, Buchsenmerkmal und ein Gerätepaar auf dem Blatt.','Die Vergleiche zu USB-Tempo, USB-C und Bild/Ton sind fachlich richtig. DisplayPort ist dabei.','Ich habe das Ergebnis überprüft und als Word-Datei oder PDF gespeichert.'];
  checks.forEach((label,i)=>{const row=document.createElement('label'),box=document.createElement('input');box.type='checkbox';box.checked=state.checks[i]===true;box.onchange=()=>{state.checks[i]=box.checked;save();};row.append(box,document.createTextNode(label));$('checklist').append(row);});
  $('copy').onclick=async()=>{const p=$('prompt');try{await navigator.clipboard.writeText(p.value);$('copy-status').textContent='Kopiert.';}catch{p.focus();p.select();$('copy-status').textContent='Text markiert. Kopieren Sie ihn mit Strg+C oder ⌘C.';}};
  update();
